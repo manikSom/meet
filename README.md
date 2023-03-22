@@ -1,6 +1,6 @@
 # meet
 
-- Deployed app link: https://maniksom.github.io/meet-app/
+- Deployed app link: https://maniksom.github.io/meet/
 
 ## Description
 
