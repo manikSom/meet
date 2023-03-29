@@ -1,7 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
 import CitySearch from "../CitySearch";
-// VARS and FUNCS //////////
 import { mockData } from "../mock-data";
 import { extractLocations } from "../api";
 
@@ -9,7 +8,8 @@ describe("<CitySearch /> component", () => {
   let locations, CitySearchWrapper;
   beforeAll(() => {
     locations = extractLocations(mockData);
-    CitySearchWrapper = shallow(<CitySearch />);
+    CitySearchWrapper =
+      shallow(<CitySearch locations={locations} updateEvents={() => {}} />);
   })
 
   test("render text input", () => {
@@ -26,8 +26,6 @@ describe("<CitySearch /> component", () => {
   });
 
   test('render list of suggestions correctly', () => {
-    const locations = extractLocations(mockData);
-    CitySearchWrapper.setState({ suggestions: locations });
     const suggestions = CitySearchWrapper.state('suggestions');
     expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(suggestions.length + 1);
     for(let i =0; i < suggestions.length; i++) {
@@ -62,5 +60,21 @@ describe("<CitySearch /> component", () => {
     const suggestions = CitySearchWrapper.state('suggestions');
     CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
     expect(CitySearchWrapper.state("query")).toBe(suggestions[0]);
+  });
+
+  test("selecting CitySearch input reveals the suggestions list", () => {
+    CitySearchWrapper.find('.city').simulate('focus');
+    expect(CitySearchWrapper.state('showSuggestions')).toBe(true);
+    expect(CitySearchWrapper.find('.suggestions').prop('style')).not.toEqual({ display: 'none' });
+  });
+
+  test("selecting a suggestion should hide the suggestions list", () => {
+    CitySearchWrapper.setState({
+      query: 'Berlin',
+      showSuggestions: null
+    });
+    CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
+    expect(CitySearchWrapper.state('showSuggestions')).toBeFalsy();
+    expect(CitySearchWrapper.find('.suggestions').prop('style')).toEqual({ display: 'none' });
   });
 });
