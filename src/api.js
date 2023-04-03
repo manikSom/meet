@@ -25,7 +25,7 @@ export const getAccessToken = async () => {
     const code = await searchParams.get("code");
     if (!code) {
       const results = await axios.get(
-        "https://wt8i4m0g27.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url"
+        "https://wt8i4m0g27.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
       );
       const { authUrl } = results.data;
       return (window.location.href = authUrl);
@@ -61,7 +61,7 @@ export const getEvents = async () => {
   const token = await getAccessToken();
   if (token) {
     removeQuery();
-    const url = `https://wt8i4m0g27.execute-api.us-east-1.amazonaws.com/dev/api/get-events/${token}`;
+    const url = `https://wt8i4m0g27.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}`;
     const result = await axios.get(url);
     if (result.data) {
       var locations = extractLocations(result.data.events);
@@ -96,7 +96,7 @@ const removeQuery = () => {
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const { access_token } = await fetch(
-    `https://wt8i4m0g27.execute-api.us-east-1.amazonaws.com/dev/api/token/${encodeCode}`
+    `https://wt8i4m0g27.execute-api.eu-central-1.amazonaws.com/dev/api/token/${encodeCode}`
   )
     .then((res) => {
       return res.json();
