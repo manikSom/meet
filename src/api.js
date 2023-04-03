@@ -14,11 +14,6 @@ const isLocalhost = Boolean(
 );
 
 
-// config is the second arument of axios requests
-const config = {
-
-}
-
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
 
@@ -30,7 +25,7 @@ export const getAccessToken = async () => {
     const code = await searchParams.get("code");
     if (!code) {
       const results = await axios.get(
-        "https://wt8i4m0g27.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url", config
+        "https://wt8i4m0g27.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url"
       );
       const { authUrl } = results.data;
       return (window.location.href = authUrl);
@@ -67,7 +62,7 @@ export const getEvents = async () => {
   if (token) {
     removeQuery();
     const url = `https://wt8i4m0g27.execute-api.us-east-1.amazonaws.com/dev/api/get-events/${token}`;
-    const result = await axios.get(url, config);
+    const result = await axios.get(url);
     if (result.data) {
       var locations = extractLocations(result.data.events);
       localStorage.setItem("lastEvents", JSON.stringify(result.data));
