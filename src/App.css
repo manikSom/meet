@@ -10,6 +10,7 @@
     --heading-bg: hsla(calc(var(--primary-hue) - 15), 100%, 65%, 20%);
     --gray88: hsla(0, 0%, 88%, var(--monochrome-alpha));
     --white-alpha: hsla(0, 0%, 100%, var(--monochrome-alpha));
+    --black-alpha: hsla(0, 0%, 0%, var(--monochrome-alpha));
     --gray50: hsl(0, 0%, 50%);
     background: linear-gradient(var(--light-angle), var(--bg-dark), var(--bg) 200%);
   }
@@ -44,10 +45,11 @@
     flex-direction: column;
   }
   
-  .CitySearch {
+  .CitySearch, .NumberOfEvents {
     border-left: 1px solid var(--bg);
     border-bottom-left-radius: 100%;
     padding: 0 0 .75em 1.75em;
+    height: 100%;
   }
   
   .NumberOfEvents {
@@ -59,7 +61,6 @@
     width: 100%;
   }
   
-  .filter-box,
   .Event {
     margin-bottom: .35em;
     box-shadow: 0 .2em hsla(0, 0%, 0%, 40%);
@@ -137,11 +138,28 @@
   .filter-box {
     background: var(--heading-text);
     display: grid;
-    width: inherit;
+    width: 100%;
     grid-template-columns: 50% auto;
     border: none;
   }
   
   .suggestions {
+    background: linear-gradient(90deg, var(--white-alpha), transparent);
+    padding: 0;
+    margin: .25em 0 0;
+  }
+  
+  .suggestions li {
+    padding: 0 0 .45em .25em;
+    cursor: pointer;
+  }
+  
+  .suggestions button {
+    padding: .25em;
+  }
+  
+  .Alert {
+    margin-top: 0;
+    padding: .25em 0 0;
     background: linear-gradient(90deg, var(--white-alpha), transparent);
   }
