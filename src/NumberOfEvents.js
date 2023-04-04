@@ -11,7 +11,7 @@ class NumberOfEvents extends Component {
     if(inputValue < 0 || inputValue == 0) inputValue = 0; 
     if(!inputValue) errText = '# of events is zero';
     else if(inputValue >= 50) {
-      errText = 'The maximumum is 50.';
+      errText = 'The maximum is 50.';
       inputValue = 50;
     }
     this.props.updateEvents(null, inputValue);
