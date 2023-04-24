@@ -22,10 +22,10 @@ class TopBar extends Component {
           <InfoAlert text={this.state.infoText} />
         </div>
         <div className="title">
-          <h1>meetApp&nbsp;</h1>
+          <h1>meet App&nbsp;</h1>
           <ThemeChangerUp />
         </div>
-        <h3 className="subtitle text-white">No Fear Of Missing Out!</h3>
+        <h3 className="subtitle text-white">up to speed with new Tech!</h3>
       </div>
     );
   }

@@ -10,14 +10,12 @@ import {
 } from "recharts";
 import "./App.css";
 import "./nprogress.css";
-// COMPONENTS //////////
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import EventList from "./EventList";
 import TopBar from "./TopBar";
 import WelcomeScreen from "./WelcomeScreen";
 import EventGenre from "./EventGenre";
-// DATA / FUNCS //////////
 import {
   getEvents,
   extractLocations,
