@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 
 class ThemeChanger extends Component {
-  themeNumber = localStorage.getItem('theme') || 190;
-  
-  state = { theme: this.themeNumber };
-
-  componentDidMount = () => { this.updateTheme(); }
+  constructor() {
+    super();
+    this.state = { theme: 190 };
+  }
 
   themeUp = () => {
     let newTheme = this.state.theme + 8;
@@ -24,19 +23,34 @@ class ThemeChanger extends Component {
   }
   
   updateTheme () {
-    localStorage.setItem("theme", this.state.theme);
     document.documentElement.style.setProperty('--primary-hue', this.state.theme)
   }
+}
 
+class ThemeChangerUp extends ThemeChanger {
   render() {
     return (
-      <div className="ThemeChanger">
-        <button onClick={this.themeUp}>+</button>
-        <div className="theme-number">{this.state.theme}</div>
-        <button onClick={this.themeDown}>-</button>
-      </div>
+      <button
+        className="ThemeChangerUp"
+        onClick={this.themeUp}
+      >
+        ▲
+      </button>
     );
   }
 }
 
-export default ThemeChanger;
+class ThemeChangerDown extends ThemeChanger {
+  render() {
+    return (
+      <button
+        className="ThemeChangerDown"
+        onClick={this.themeDown}
+      >
+        ▼
+      </button>
+    );
+  }
+}
+
+export { ThemeChangerUp, ThemeChangerDown };

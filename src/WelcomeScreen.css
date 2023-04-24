@@ -1,10 +1,23 @@
 .WelcomeScreen {
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     height: 100%;
     top: 0;
-    background: white;
+    padding-top: 20%;
+    background: linear-gradient(var(--light-angle), var(--bg-dark), var(--bg) 200%);
   }
+  
+  .WelcomeScreen > h1,
+  .WelcomeScreen > h2,
+  .WelcomeScreen > h3,
+  .WelcomeScreen > h4 { text-align: center;}
+  
+  .WelcomeScreen > h4 { color: white; }
+  
+  .p-policy-link { color: var(--heading-text); }
   
   .login-button {
     color: #494949;
